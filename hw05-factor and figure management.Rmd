@@ -302,10 +302,6 @@ p12<-filter(gapminder, country %in% c('China','Germany','Canada'))%>%
 
 Now I want to convert it to plotly graph.
 
-```{r}
-ggplotly(pl5)
-```
-
 `plotly` is amazing! It allows people to quickly create beautiful, reactive D3 plots that are particularly powerful in websites and dashboards. we can also hover our mouse over the plots and see the data values, zoom in and out of specific regions, and capture stills.
 
 ## Part 4: Writing figures to file 
