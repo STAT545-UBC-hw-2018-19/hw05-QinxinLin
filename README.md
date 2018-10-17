@@ -1,2 +1,12 @@
-# hw05-QinxinLin
-hw05-QinxinLin created by GitHub Classroom
+# HW05-Factor and figure management
+
+## Links:
+
+* [Homework source code]()
+
+* [Homework 05: Factor and figure management]()
+
+## Reflections: 
+
+
+
