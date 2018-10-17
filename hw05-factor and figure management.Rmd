@@ -280,8 +280,30 @@ pl4<-ggplot(p11,aes(x=continent,y=gdp_range))+
 grid.arrange(pl1,pl2,pl3,pl4,nrow=2)
 ```
 
+let's plot one more: distribution of Life Expectancy from 1952 to 2007 in each contiennt.
+
+```{r}
+group_by(gapminder,year)%>%
+  filter(lifeExp > (mean(lifeExp)-sd(lifeExp)) & 
+         lifeExp < (mean(lifeExp)+sd(lifeExp)))%>% #remove data beyond 1 standard deviation
+  ggplot(aes(x=lifeExp))+
+  geom_density(aes(fill=continent),alpha=0.5)+
+  facet_wrap(~year)+
+  theme(plot.title = element_text(size=14,hjust=0.5))+
+  labs(x="life expectancy",
+       y="density of countries",
+       title="Distribution of Life Expectancy from 1952 to 2007")
+```
+
+plotly: 
+
+As required I need to make a new graph by converting this visual to a plotly graph. unfortunately, the output for this markdown file is github-document, it cannot show plotly graph, so I will just compare differene between ggplot graph and plotly graph. 
+
+`plotly` allows us to quickly create beautiful, reactive 3D plots that are particularly powerful in websites and dashboards. we can also hover our mouse over the plots and see the data values, zoom in and out of specific regions, and capture stills.
+
 ## Part 4: Writing figures to file 
 
+I will make a density plot of distribution of GDP per capita for each continent from 1952 to 2007 and then save it as an PNG image. 
 ```{r}
 # plot1
 plot1<-ggplot(gapminder,aes(x=gdpPercap))+
@@ -306,32 +328,4 @@ ggsave("plot1.png",
 Then I will load and embed it in my report.
 
 ![plot1](plot1.png)
-
-Secondly, I will use histogram plot to visualize the distribution of GDP per capita for each continent and then save this as a PDF image. 
-
-```{r}
-# plot2
-plot2 <- filter(gapminder,year %in% c(1952,2007))%>%
-  ggplot(aes(x=gdpPercap))+
-  geom_histogram(fill='blue',alpha=0.3,bins=45)+
-  facet_grid(continent~year)+
-  scale_x_continuous(breaks = seq(0, 60000, 10000),
-                     labels = as.character(seq(0, 60000, 10000)),
-                     limits = c(0,60000))+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        plot.title = element_text(size=14,hjust=0.5))+
-  labs(x="GDP per capita",
-       y="number of countries",
-       title="Distribution of GDP per capita for each continent in 1952 and 2007")
-# save plot2 as a pdf image
-ggsave("plot2.pdf",
-       plot=plot2,
-       width = 10, 
-       height = 7,
-       scale = 1.2)
-```
-
-Then I will load and embed it in my report.
-
-![plot2](plot2.pdf)
 
