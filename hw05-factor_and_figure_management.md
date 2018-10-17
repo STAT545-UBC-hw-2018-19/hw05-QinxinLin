@@ -521,7 +521,7 @@ ggsave("plot1.png",
 
 Then I will load and embed it in my report.
 
-![plot1](/Users/linqinxin/Documents/GitHub/hw05-QinxinLin/plot1.png)
+![plot1](plot1.png)
 
 Secondly, I will use histogram plot to visualize the distribution of GDP
 per capita for each continent and then save this as a PDF image.
@@ -552,4 +552,4 @@ ggsave("plot2.pdf",
 
 Then I will load and embed it in my report.
 
-![plot2](/Users/linqinxin/Documents/GitHub/hw05-QinxinLin/plot2.pdf)
+![plot2](plot2.pdf)
