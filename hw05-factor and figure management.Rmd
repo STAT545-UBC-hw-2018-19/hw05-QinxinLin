@@ -300,23 +300,6 @@ p12<-filter(gapminder, country %in% c('China','Germany','Canada'))%>%
            title="Life expectancy of China, Canada, Germany from 1952 to 2007"))
 ```
 
-Now I will convert it into plotly graph.
-
-```{r}
-ggplotly(pl5)
-```
-
-Also, I want to make 3D plot of above plot using `plot_ly()`.
-
-```{r}
-plot_ly(p12,
-        x=~year,
-        y=~lifeExp,
-        z=~country,
-        type='scatter3d',
-        mode='markers')
-```
-
 `plotly` is amazing! It allows people to quickly create beautiful, reactive D3 plots that are particularly powerful in websites and dashboards. we can also hover our mouse over the plots and see the data values, zoom in and out of specific regions, and capture stills.
 
 ## Part 4: Writing figures to file 
